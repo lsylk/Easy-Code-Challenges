@@ -82,68 +82,100 @@ describe('Decode or encode the following string', function(){
 // ===================================================
 // ===============  Leaping Lemur =====================
 
+// describe('Leaping Lemur', function(){
+    
+//     it('No Branches', function() {
+//         var lemur = new codeChallenges.LeapingLemur([0]);
+//         expect(lemur.jumps()).toEqual(0);
+//     });
+
+//     it('Two alive branches', function() {
+//         var lemur = new codeChallenges.LeapingLemur([0, 0]);
+//         expect(lemur.jumps()).toEqual(1);
+//     });
+
+//     it('Three alive brances', function() {
+//         var lemur = new codeChallenges.LeapingLemur([0, 0, 0]);
+//         expect(lemur.jumps()).toEqual(1);
+//     });
+
+//     it('One Dead Branch', function() {
+//         var lemur = new codeChallenges.LeapingLemur([0, 1, 0]);
+//         expect(lemur.jumps()).toEqual(1);
+//     });
+
+//     it('One Dead Branch and Three alive Branches', function() {
+//         var lemur = new codeChallenges.LeapingLemur([0, 0, 1, 0]);
+//         expect(lemur.jumps()).toEqual(2);
+//     });
+
+//     it('Two Dead Branches', function() {
+//         var lemur = new codeChallenges.LeapingLemur([0, 0, 0, 0, 1, 0, 0, 1, 0]);
+//         expect(lemur.jumps()).toEqual(5);
+//     });
+
+// });
+
+// ===================================================
+// ===================  Pangram ======================
+
 describe('Pangram', function(){
     
-    it('No Branches', function() {
-        var lemur = new codeChallenges.LeapingLemur([0]);
-        expect(lemur.jumps()).toEqual(0);
-    });
-
-    it('Two alive branches', function() {
-        var lemur = new codeChallenges.LeapingLemur([0, 0]);
-        expect(lemur.jumps()).toEqual(1);
-    });
-
-    it('Three alive brances', function() {
-        var lemur = new codeChallenges.LeapingLemur([0, 0, 0]);
-        expect(lemur.jumps()).toEqual(1);
-    });
-
-    it('One Dead Branch', function() {
-        var lemur = new codeChallenges.LeapingLemur([0, 1, 0]);
-        expect(lemur.jumps()).toEqual(1);
-    });
-
-    it('One Dead Branch and Three alive Branches', function() {
-        var lemur = new codeChallenges.LeapingLemur([0, 0, 1, 0]);
-        expect(lemur.jumps()).toEqual(2);
-    });
-
-    it('Two Dead Branches', function() {
-        var lemur = new codeChallenges.LeapingLemur([0, 0, 0, 0, 1, 0, 0, 1, 0]);
-        expect(lemur.jumps()).toEqual(5);
-    });
-
-});
-
-describe('Pangram', function(){
-    
-    it('True Pangram including Symbols', function() {
+    it('It is Pangram including Symbols', function() {
         var pangram = new codeChallenges.Pangram('The quick brown fox jumps over the lazy dog!');
         expect(pangram.isPangram()).toEqual(true);
     });
 
-    it('True Pangram with Uppercase Letters', function() {
+    it('It is Pangram with Uppercase Letters', function() {
         var pangram = new codeChallenges.Pangram('"\"Five quacking Zephyrs jolt my wax bed.\""');
         expect(pangram.isPangram()).toEqual(true);
     });
 
-    it('True Pangram with Lowercase Letters', function() {
+    it('It is Pangram with Lowercase Letters', function() {
         var pangram = new codeChallenges.Pangram('the 1 quick brown fox jumps over the 2 lazy dogs');
         expect(pangram.isPangram()).toEqual(true);
     });
 
-    it('missing letters replaced by numbers', function() {
+    it('Missing Letters replaced by Numbers', function() {
     var pangram = new codeChallenges.Pangram("7h3 qu1ck brown fox jumps ov3r 7h3 lazy dog");
     expect(pangram.isPangram()).toEqual(false);
     });
 
-    it("another missing character 'x'", function() {
+    it("Another missing Character 'x'", function() {
     var pangram = new codeChallenges.Pangram("the quick brown fish jumps over the lazy dog");
+    expect(pangram.isPangram()).toEqual(false);
+    });
+
+    it("Missing Letters", function() {
+    var pangram = new codeChallenges.Pangram("I like cats, but not mice");
     expect(pangram.isPangram()).toEqual(false);
     });
 
 });
 
+// // ===================================================
+// // ====================  Split =======================
 
+describe('Split', function(){
+    
+    it('Split by " " ', function() {
+        var phrase = new codeChallenges.SplitString('I love balloonicorn', ' ');
+        expect(phrase.split()).toEqual(['i', 'love', 'balloonicorn']);
+    });
+
+    it('Split by "that" ', function() {
+        var phrase = new codeChallenges.SplitString('that is which is that which is that', ' that ');
+        expect(phrase.split()).toEqual(['that is which is', 'which is that']);
+    });
+
+    it('Split by " " ', function() {
+        var phrase = new codeChallenges.SplitString('that is which is that which is that', 'that');
+        expect(phrase.split()).toEqual(['', ' is which is ', ' which is ', '']);
+    });
+
+    it('Split by " " ', function() {
+        var phrase = new codeChallenges.SplitString('hello world', 'nope');
+        expect(phrase.split()).toEqual(['hello world']);
+    });
+});
 

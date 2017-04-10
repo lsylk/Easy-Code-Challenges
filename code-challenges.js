@@ -90,28 +90,28 @@ Code.prototype.encode = function(){
 
 // Write a function that returns the number of jumps needed:
 
-var LeapingLemur = function(branches){
-    this.branches = branches;
-};
+// var LeapingLemur = function(branches){
+//     this.branches = branches;
+// };
 
-LeapingLemur.prototype.jumps = function(){
+// LeapingLemur.prototype.jumps = function(){
 
-    totalJumps = 0;
+//     totalJumps = 0;
 
-    for (var i = 0; i < this.branches.length; ){
+//     for (var i = 0; i < this.branches.length; ){
 
-        if (this.branches[i + 2] === 0) {
-            totalJumps += 1;
-            i += 2;
+//         if (this.branches[i + 2] === 0) {
+//             totalJumps += 1;
+//             i += 2;
 
-        } else if (this.branches[i + 1] === 0) {
-            totalJumps += 1;
-            i += 1;
-        }
-    }
+//         } else if (this.branches[i + 1] === 0) {
+//             totalJumps += 1;
+//             i += 1;
+//         }
+//     }
 
-    return totalJumps;
-};
+//     return totalJumps;
+// };
 
 // ===============  Pangram =================
 var Pangram = function(phrase){
@@ -123,7 +123,27 @@ Pangram.prototype.isPangram = function(){
     return /^[A-z!@#$%^&*()_+,.?;:'" ]+$/.test(this.phrase);
 };
 
+// // ====================  Split ==================
 
+var SplitString = function(str, splitter) {
+    this.str = str;
+    this.splitter = splitter;
+};
+
+SplitString.prototype.split = function(){
+
+    var words = [];
+    var start = 0;
+    
+    for (var i=0; i < this.str.length; i++) {
+        if (this.str[i] === this.splitter) {
+            var word = this.str.substring(start,i);
+            start = i;
+            words.push(word);
+        }
+    }
+    return words;
+};
 
 
 // Key is Palindrome, value is the Constructor/function Palindrome.
@@ -132,5 +152,6 @@ module.exports = {
     PigLatin: PigLatin,
     Code: Code,
     LeapingLemur: LeapingLemur,
-    Pangram: Pangram
+    Pangram: Pangram,
+    SplitString: SplitString
 };
