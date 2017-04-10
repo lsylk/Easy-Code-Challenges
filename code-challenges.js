@@ -34,12 +34,29 @@ PigLatin.prototype.isPigLatin = function(){
     return phrase.join(' ');
 };
 
+// ===============  Decode =================
 
+var Decode = function(code) {
+    this.code = code;
+};
 
+Decode.prototype.isDecoded = function(){
+
+    var message = '';
+
+    for (var i=0; i < this.code.length; i++){
+        if (/[0-9]/.test(this.code[i])) {
+            message += this.code[i + 1 + parseInt(this.code[i])];
+        }
+    }
+
+    return message;
+};
 
 
 // Key is Palindrome, value is the Constructor/function Palindrome.
 module.exports = {
     Palindrome: Palindrome,
-    PigLatin: PigLatin
+    PigLatin: PigLatin,
+    Decode: Decode
 };

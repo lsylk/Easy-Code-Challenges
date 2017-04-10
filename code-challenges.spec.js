@@ -1,5 +1,8 @@
 var codeChallenges = require('./code-challenges');
 
+// ===================================================
+// ===============  Palindrome Tests =================
+
 describe('Palindrome', function(){
     // function like a container for tests.
     // it statements are the actual tests.
@@ -21,21 +24,46 @@ describe('Palindrome', function(){
 
 });
 
+// ===================================================
+// ===============  Pig Latin Tests =================
+
 describe('Turn phrase into a PigLatin', function(){
     
     it('has words with lowercase letters', function() {
-        var palindrome = new codeChallenges.PigLatin('porcupines are cute');
-        expect(palindrome.isPigLatin()).toEqual('orcupinespay areyay utecay');
+        var pigLatin = new codeChallenges.PigLatin('porcupines are cute');
+        expect(pigLatin.isPigLatin()).toEqual('orcupinespay areyay utecay');
     });
 
     it('has words with numbers', function() {
-        var palindrome = new codeChallenges.PigLatin('give me 1 apple');
-        expect(palindrome.isPigLatin()).toEqual('ivegay emay 1ay appleyay');
+        var pigLatin = new codeChallenges.PigLatin('give me 1 apple');
+        expect(pigLatin.isPigLatin()).toEqual('ivegay emay 1ay appleyay');
     });
 
     it('has words with Uppercase Letters', function() {
-        var palindrome = new codeChallenges.PigLatin('Hello Awesome Programmer');
-        expect(palindrome.isPigLatin()).toEqual('elloHay Awesomeyay rogrammerPay');
+        var pigLatin = new codeChallenges.PigLatin('Hello Awesome Programmer');
+        expect(pigLatin.isPigLatin()).toEqual('elloHay Awesomeyay rogrammerPay');
+    });
+
+});
+
+// ===================================================
+// ===============  Decode Tests =====================
+
+describe('Decode the following phrase', function(){
+    
+    it('Decodes a Word', function() {
+        var decode = new codeChallenges.Decode('0h1ae2bcy');
+        expect(decode.isDecoded()).toEqual('hey');
+    });
+
+    it('Decodes a Word with Uppercase Letters', function() {
+        var decode = new codeChallenges.Decode('3bkdB0a2jhl2okl1fo2oso0n');
+        expect(decode.isDecoded()).toEqual('Balloon');
+    });
+
+    it('Decodes a Phrase', function() {
+        var decode = new codeChallenges.Decode('0I 2cdh1a3abcv2ace 13 2kld1o2adg1s0.');
+        expect(decode.isDecoded()).toEqual('I have 3 dogs.');
     });
 
 });
