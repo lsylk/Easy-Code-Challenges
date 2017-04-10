@@ -74,7 +74,7 @@ Code.prototype.encode = function(){
     }
 
     this.code = message;
-    console.log(this.code);
+    //console.log(this.code);
     return this;
 
 
@@ -94,14 +94,15 @@ LeapingLemur.prototype.jumps = function(){
 
     totalJumps = 0;
 
-    for (var i = 0; i < this.branches.length; i++){
-        if (this.branches[i + 1] === 0 && this.branches[i + 2] === 0) {
+    for (var i = 0; i < this.branches.length; ){
+
+        if (this.branches[i + 2] === 0) {
             totalJumps += 1;
             i += 2;
-        } else if (this.branches[i + 1] === 0 && this.branches[i + 2] === 1) {
+
+        } else if (this.branches[i + 1] === 0) {
             totalJumps += 1;
             i += 1;
-
         }
     }
 
