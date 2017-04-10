@@ -82,7 +82,7 @@ describe('Decode or encode the following string', function(){
 // ===================================================
 // ===============  Leaping Lemur =====================
 
-describe('How many jumps does the Lemur need to jump', function(){
+describe('Pangram', function(){
     
     it('No Branches', function() {
         var lemur = new codeChallenges.LeapingLemur([0]);
@@ -115,3 +115,35 @@ describe('How many jumps does the Lemur need to jump', function(){
     });
 
 });
+
+describe('Pangram', function(){
+    
+    it('True Pangram including Symbols', function() {
+        var pangram = new codeChallenges.Pangram('The quick brown fox jumps over the lazy dog!');
+        expect(pangram.isPangram()).toEqual(true);
+    });
+
+    it('True Pangram with Uppercase Letters', function() {
+        var pangram = new codeChallenges.Pangram('"\"Five quacking Zephyrs jolt my wax bed.\""');
+        expect(pangram.isPangram()).toEqual(true);
+    });
+
+    it('True Pangram with Lowercase Letters', function() {
+        var pangram = new codeChallenges.Pangram('the 1 quick brown fox jumps over the 2 lazy dogs');
+        expect(pangram.isPangram()).toEqual(true);
+    });
+
+    it('missing letters replaced by numbers', function() {
+    var pangram = new codeChallenges.Pangram("7h3 qu1ck brown fox jumps ov3r 7h3 lazy dog");
+    expect(pangram.isPangram()).toEqual(false);
+    });
+
+    it("another missing character 'x'", function() {
+    var pangram = new codeChallenges.Pangram("the quick brown fish jumps over the lazy dog");
+    expect(pangram.isPangram()).toEqual(false);
+    });
+
+});
+
+
+
