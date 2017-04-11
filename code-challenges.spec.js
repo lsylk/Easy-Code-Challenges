@@ -47,7 +47,7 @@ describe('Turn phrase into a PigLatin', function(){
 });
 
 // ===================================================
-// ===============  Decode Tests =====================
+// ===============  Decode and Encode Tests =====================
 
 describe('Decode or encode the following string', function(){
     
@@ -82,39 +82,39 @@ describe('Decode or encode the following string', function(){
 // ===================================================
 // ===============  Leaping Lemur =====================
 
-// describe('Leaping Lemur', function(){
+describe('Leaping Lemur', function(){
     
-//     it('No Branches', function() {
-//         var lemur = new codeChallenges.LeapingLemur([0]);
-//         expect(lemur.jumps()).toEqual(0);
-//     });
+    it('No Branches', function() {
+        var lemur = new codeChallenges.LeapingLemur([0]);
+        expect(lemur.jumps()).toEqual(0);
+    });
 
-//     it('Two alive branches', function() {
-//         var lemur = new codeChallenges.LeapingLemur([0, 0]);
-//         expect(lemur.jumps()).toEqual(1);
-//     });
+    it('Two alive branches', function() {
+        var lemur = new codeChallenges.LeapingLemur([0, 0]);
+        expect(lemur.jumps()).toEqual(1);
+    });
 
-//     it('Three alive brances', function() {
-//         var lemur = new codeChallenges.LeapingLemur([0, 0, 0]);
-//         expect(lemur.jumps()).toEqual(1);
-//     });
+    it('Three alive brances', function() {
+        var lemur = new codeChallenges.LeapingLemur([0, 0, 0]);
+        expect(lemur.jumps()).toEqual(1);
+    });
 
-//     it('One Dead Branch', function() {
-//         var lemur = new codeChallenges.LeapingLemur([0, 1, 0]);
-//         expect(lemur.jumps()).toEqual(1);
-//     });
+    it('One Dead Branch', function() {
+        var lemur = new codeChallenges.LeapingLemur([0, 1, 0]);
+        expect(lemur.jumps()).toEqual(1);
+    });
 
-//     it('One Dead Branch and Three alive Branches', function() {
-//         var lemur = new codeChallenges.LeapingLemur([0, 0, 1, 0]);
-//         expect(lemur.jumps()).toEqual(2);
-//     });
+    it('One Dead Branch and Three alive Branches', function() {
+        var lemur = new codeChallenges.LeapingLemur([0, 0, 1, 0]);
+        expect(lemur.jumps()).toEqual(2);
+    });
 
-//     it('Two Dead Branches', function() {
-//         var lemur = new codeChallenges.LeapingLemur([0, 0, 0, 0, 1, 0, 0, 1, 0]);
-//         expect(lemur.jumps()).toEqual(5);
-//     });
+    it('Two Dead Branches', function() {
+        var lemur = new codeChallenges.LeapingLemur([0, 0, 0, 0, 1, 0, 0, 1, 0]);
+        expect(lemur.jumps()).toEqual(5);
+    });
 
-// });
+});
 
 // ===================================================
 // ===================  Pangram ======================
@@ -160,7 +160,7 @@ describe('Split', function(){
     
     it('Split by " " ', function() {
         var phrase = new codeChallenges.SplitString('I love balloonicorn', ' ');
-        expect(phrase.split()).toEqual(['i', 'love', 'balloonicorn']);
+        expect(phrase.split()).toEqual(['I', 'love', 'balloonicorn']);
     });
 
     it('Split by "that" ', function() {

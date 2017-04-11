@@ -98,7 +98,7 @@ LeapingLemur.prototype.jumps = function(){
 
     totalJumps = 0;
 
-    for (var i = 0; i < this.branches.length; ){
+    for (var i = 0; i < this.branches.length -1; ){
 
         if (this.branches[i + 2] === 0) {
             totalJumps += 1;
@@ -107,6 +107,7 @@ LeapingLemur.prototype.jumps = function(){
         } else if (this.branches[i + 1] === 0) {
             totalJumps += 1;
             i += 1;
+
         } else {
             throw new Error("Cannot reach the end.");
         }
@@ -199,10 +200,11 @@ SplitString.prototype.split = function(){
     for (var i=0; i < this.str.length; i++) {
         if (this.str[i] === this.splitter) {
             var word = this.str.substring(start,i);
-            start = i;
+            start = i + 1;
             words.push(word);
         }
     }
+    words.push(this.str.slice(start));
     return words;
 };
 
