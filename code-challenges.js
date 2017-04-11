@@ -90,37 +90,98 @@ Code.prototype.encode = function(){
 
 // Write a function that returns the number of jumps needed:
 
-// var LeapingLemur = function(branches){
-//     this.branches = branches;
-// };
+var LeapingLemur = function(branches){
+    this.branches = branches;
+};
 
-// LeapingLemur.prototype.jumps = function(){
+LeapingLemur.prototype.jumps = function(){
 
-//     totalJumps = 0;
+    totalJumps = 0;
 
-//     for (var i = 0; i < this.branches.length; ){
+    for (var i = 0; i < this.branches.length; ){
 
-//         if (this.branches[i + 2] === 0) {
-//             totalJumps += 1;
-//             i += 2;
+        if (this.branches[i + 2] === 0) {
+            totalJumps += 1;
+            i += 2;
 
-//         } else if (this.branches[i + 1] === 0) {
-//             totalJumps += 1;
-//             i += 1;
-//         }
-//     }
+        } else if (this.branches[i + 1] === 0) {
+            totalJumps += 1;
+            i += 1;
+        } else {
+            throw new Error("Cannot reach the end.");
+        }
+    }
 
-//     return totalJumps;
-// };
+    return totalJumps;
+};
 
 // ===============  Pangram =================
-var Pangram = function(phrase){
-    this.phrase = phrase;
+var Pangram = function(string){
+    this.string = string.toLowerCase();
 };
 
 Pangram.prototype.isPangram = function(){
 
-    return /^[A-z!@#$%^&*()_+,.?;:'" ]+$/.test(this.phrase);
+    var values = [];
+
+    var totalLetters = 0;
+
+    var alphabet = {
+        a: 0,
+        b: 0,
+        c: 0,
+        d: 0,
+        e: 0,
+        f: 0,
+        g: 0,
+        h: 0,
+        i: 0,
+        j: 0,
+        k: 0,
+        l: 0,
+        m: 0,
+        n: 0,
+        o: 0,
+        p: 0,
+        q: 0,
+        r: 0,
+        s: 0,
+        t: 0,
+        u: 0,
+        v: 0,
+        w: 0,
+        x: 0,
+        y: 0,
+        z: 0
+   };
+
+    if (this.string !== ''){
+        for (i = 0; i < this.string.length; i++){
+            if (alphabet[this.string[i]] !== undefined) {
+                    alphabet[this.string[i]] += 1;
+                }
+        }
+
+        for (var key in alphabet) {
+            values.push(alphabet[key]);
+        }
+
+        for (i = 0; i < values.length; i++) {
+            if (values[i] >= 1) {
+                totalLetters += 1;
+            }
+        }
+
+        if (totalLetters === 26) {
+            return true;
+
+        } else {
+            return false;
+        }
+        
+    } else {
+        return false;
+    }
 };
 
 // // ====================  Split ==================
