@@ -196,11 +196,23 @@ SplitString.prototype.split = function(){
 
     var words = [];
     var start = 0;
+
+    var matchSplitter = false;
     
     for (var i=0; i < this.str.length; i++) {
-        if (this.str[i] === this.splitter) {
+        matchSplitter = true;
+
+        for (var j=0; j < this.splitter.length; j++){
+            if (this.str[j + i] !== this.splitter[j]) {
+                matchSplitter = false;
+                break;
+            }
+        }
+
+        if (matchSplitter) {
             var word = this.str.substring(start,i);
-            start = i + 1;
+            start = i + this.splitter.length;
+            i += this.splitter.length;
             words.push(word);
         }
     }
